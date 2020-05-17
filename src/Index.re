@@ -29,23 +29,39 @@ let makeContainer = text => {
 
 // All 4 examples.
 ReactDOMRe.render(
-  <BlinkingGreeting>
-    {React.string("Hello!")}
-  </BlinkingGreeting>,
+  <BlinkingGreeting> {React.string("Hello!")} </BlinkingGreeting>,
   makeContainer("Blinking Greeting"),
 );
 
-ReactDOMRe.render(
-  <ReducerFromReactJSDocs />,
-  makeContainer("Reducer From ReactJS Docs"),
+ReactDOMRe.render(<ReducerFromReactJSDocs />, makeContainer("Reducer From ReactJS Docs"));
+
+ReactDOMRe.render(<FetchedDogPictures />, makeContainer("Fetched Dog Pictures"));
+
+ReactDOMRe.render(<ReasonUsingJSUsingReason />, makeContainer("Reason Using JS Using Reason"));
+
+Js.log2(
+  "interpret ,. on 5",
+  Brainfuck.interpret({numCells: 1, instrs: [|In, Out|], input: [5]}),
+);
+Js.log2(
+  "interpretTrace ,. on 5",
+  Brainfuck.interpretTrace({numCells: 1, instrs: [|In, Out|], input: [5]}) |> Array.of_list,
 );
 
-ReactDOMRe.render(
-  <FetchedDogPictures />,
-  makeContainer("Fetched Dog Pictures"),
+Js.log2(
+  "interpret ,>,[-<+>]<. on 5 10",
+  Brainfuck.interpret({
+    numCells: 2,
+    instrs: [|In, IncP, In, JmpFwdZ, Dec, DecP, Inc, IncP, JmpBwdNZ, DecP, Out|],
+    input: [5, 10],
+  }),
 );
 
-ReactDOMRe.render(
-  <ReasonUsingJSUsingReason />,
-  makeContainer("Reason Using JS Using Reason"),
+Js.log2(
+  "interpretTrace ,>,[-<+>]<. on 5 10",
+  Brainfuck.interpretTrace({
+    numCells: 2,
+    instrs: [|In, IncP, In, JmpFwdZ, Dec, DecP, Inc, IncP, JmpBwdNZ, DecP, Out|],
+    input: [5, 10],
+  }),
 );
