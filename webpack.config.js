@@ -12,4 +12,4 @@ module.exports = {
     filename: 'index.js',
     publicPath: "/brain-unfucked/"
   },
-}; i
+};
